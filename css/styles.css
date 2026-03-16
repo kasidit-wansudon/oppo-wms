@@ -1,0 +1,236 @@
+/* ==================== VARIABLES ==================== */
+:root {
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-yellow-500: rgba(217, 164, 6, 1);
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-gray-400-rgb: 119, 124, 124;
+  --color-teal-300-rgb: 50, 184, 198;
+  --color-gray-300-rgb: 167, 169, 169;
+  --color-gray-200-rgb: 245, 245, 245;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-yellow-500-rgb: 217, 164, 6;
+  --bg: var(--color-cream-50);
+  --surface: var(--color-cream-100);
+  --text: var(--color-slate-900);
+  --text2: var(--color-slate-500);
+  --pri: var(--color-teal-500);
+  --pri-h: var(--color-teal-600);
+  --sec: rgba(var(--color-brown-600-rgb), 0.08);
+  --sec-h: rgba(var(--color-brown-600-rgb), 0.15);
+  --border: rgba(var(--color-gray-300-rgb), 0.5);
+  --btn-txt: white;
+  --card-b: rgba(var(--color-gray-300-rgb), 0.3);
+  --err: var(--color-red-500);
+  --ok: var(--color-teal-500);
+  --warn: var(--color-yellow-500);
+  --ok-rgb: 33, 128, 141;
+  --err-rgb: 192, 21, 47;
+  --warn-rgb: 217, 164, 6;
+  --sp4: 4px; --sp8: 8px; --sp12: 12px; --sp16: 16px; --sp20: 20px; --sp24: 24px;
+  --r: 8px; --rl: 12px;
+  --sh: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==================== DARK MODE ==================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--color-charcoal-700);
+    --surface: var(--color-charcoal-800);
+    --text: var(--color-gray-200);
+    --text2: rgba(var(--color-gray-300-rgb), 0.7);
+    --pri: var(--color-teal-300);
+    --pri-h: var(--color-teal-400);
+    --sec: rgba(var(--color-gray-400-rgb), 0.15);
+    --sec-h: rgba(var(--color-gray-400-rgb), 0.25);
+    --border: rgba(var(--color-gray-400-rgb), 0.3);
+    --err: var(--color-red-400);
+    --ok: var(--color-teal-300);
+    --warn: var(--color-yellow-500);
+    --btn-txt: var(--color-slate-900);
+    --card-b: rgba(var(--color-gray-400-rgb), 0.2);
+    --ok-rgb: var(--color-teal-300-rgb);
+    --err-rgb: var(--color-red-400-rgb);
+  }
+}
+
+/* ==================== BASE ==================== */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font); background:var(--bg); color:var(--text); line-height:1.5; }
+.container { max-width:1600px; margin:0 auto; padding:var(--sp20); }
+
+/* ==================== HEADER & TABS ==================== */
+header { background:var(--surface); border-bottom:1px solid var(--border); padding:var(--sp16); margin-bottom:var(--sp24); border-radius:var(--rl); }
+h1 { font-size:28px; font-weight:600; margin-bottom:var(--sp8); }
+.tabs { display:flex; gap:var(--sp8); margin-top:var(--sp16); flex-wrap:wrap; }
+.tab { padding:var(--sp8) var(--sp16); background:var(--sec); border:none; border-radius:var(--r); cursor:pointer; font-size:14px; font-weight:500; color:var(--text); transition:all .2s; }
+.tab:hover { background:var(--sec-h); }
+.tab.active { background:var(--pri); color:var(--btn-txt); }
+
+/* ==================== CONTENT SECTIONS ==================== */
+.content-section { display:none; }
+.content-section.active { display:block; }
+
+/* ==================== CARDS ==================== */
+.card { background:var(--surface); border:1px solid var(--card-b); border-radius:var(--rl); padding:var(--sp20); margin-bottom:var(--sp16); box-shadow:var(--sh); }
+.card h2 { font-size:20px; font-weight:600; margin-bottom:var(--sp16); }
+
+/* ==================== FORMS ==================== */
+.form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--sp16); margin-bottom:var(--sp16); }
+.form-group { display:flex; flex-direction:column; gap:var(--sp8); }
+label { font-size:14px; font-weight:500; color:var(--text); }
+input,select,textarea { padding:var(--sp8) var(--sp12); border:1px solid var(--border); border-radius:var(--r); background:var(--surface); color:var(--text); font-size:14px; font-family:var(--font); }
+input:focus,select:focus,textarea:focus { outline:2px solid var(--pri); border-color:var(--pri); }
+
+/* ==================== BUTTONS ==================== */
+.btn { padding:var(--sp8) var(--sp16); border:none; border-radius:var(--r); font-size:14px; font-weight:500; cursor:pointer; transition:all .2s; }
+.btn-primary { background:var(--pri); color:var(--btn-txt); }
+.btn-primary:hover { background:var(--pri-h); }
+.btn-secondary { background:var(--sec); color:var(--text); }
+.btn-secondary:hover { background:var(--sec-h); }
+.btn-danger { background:var(--err); color:white; }
+.btn-warning { background:var(--warn); color:white; }
+.btn-actions { display:flex; gap:var(--sp8); margin-top:var(--sp16); flex-wrap:wrap; }
+
+/* ==================== TABLES ==================== */
+table { width:100%; border-collapse:collapse; margin-top:var(--sp16); font-size:13px; }
+th,td { padding:var(--sp8) var(--sp12); text-align:left; border-bottom:1px solid var(--border); }
+th { font-weight:600; background:var(--sec); font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+tr:hover { background:var(--sec); }
+.table-container { overflow-x:auto; }
+
+/* ==================== STATUS BADGES ==================== */
+.status-badge { display:inline-block; padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; }
+.status-pending { background:rgba(var(--warn-rgb),0.15); color:var(--warn); }
+.status-approved { background:rgba(var(--ok-rgb),0.15); color:var(--ok); }
+.status-completed { background:rgba(var(--ok-rgb),0.25); color:var(--ok); }
+.status-cancelled { background:rgba(var(--err-rgb),0.15); color:var(--err); }
+
+/* ==================== ACTION BUTTONS ==================== */
+.action-btn { padding:4px 8px; font-size:12px; margin-right:4px; }
+
+/* ==================== STATS ==================== */
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--sp16); margin-bottom:var(--sp24); }
+.stat-card { background:var(--surface); border:1px solid var(--card-b); border-radius:var(--r); padding:var(--sp16); box-shadow:var(--sh); }
+.stat-label { font-size:13px; color:var(--text2); margin-bottom:var(--sp4); }
+.stat-value { font-size:24px; font-weight:600; color:var(--text); }
+
+/* ==================== SEARCH BAR ==================== */
+.search-bar { margin-bottom:var(--sp16); }
+.search-bar input { width:100%; max-width:400px; }
+
+/* ==================== MODALS ==================== */
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; padding:var(--sp20); overflow-y:auto; }
+.modal.active { display:flex; align-items:center; justify-content:center; }
+.modal-content { background:var(--surface); border-radius:var(--rl); padding:var(--sp24); max-width:800px; width:100%; max-height:90vh; overflow-y:auto; }
+.modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--sp20); }
+.modal-close { background:none; border:none; font-size:24px; cursor:pointer; color:var(--text2); }
+
+/* ==================== SUB-PO ==================== */
+.sub-po-list { margin-top:var(--sp16); }
+.sub-po-item { background:var(--sec); border-radius:var(--r); padding:var(--sp12); margin-bottom:var(--sp12); }
+.sub-po-header { font-weight:600; margin-bottom:var(--sp8); color:var(--text); display:flex; justify-content:space-between; align-items:center; }
+.sub-po-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--sp8); font-size:13px; }
+.sub-po-label { color:var(--text2); font-size:11px; text-transform:uppercase; letter-spacing:.5px; }
+.sub-po-value { color:var(--text); font-weight:500; margin-top:var(--sp4); }
+
+/* ==================== REPORTS ==================== */
+.section-title { font-size:16px; font-weight:600; margin:16px 0 12px; }
+.report-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:var(--sp12); margin-bottom:var(--sp16); }
+.report-summary .stat-card { padding:var(--sp12); }
+.report-summary .stat-value { font-size:18px; }
+
+/* ==================== ALERT ROW ==================== */
+.alert-row { background:rgba(var(--err-rgb),0.06) !important; }
+
+/* ==================== PRINT ==================== */
+@media print {
+  .tabs, .btn-actions, .action-btn, .btn, .search-bar, header { display:none !important; }
+  .content-section { display:block !important; }
+  .modal { display:none !important; }
+  body { background:white; color:black; }
+}
+
+/* ==================== SEARCHABLE SELECT ==================== */
+.searchable-select {
+  position: relative;
+  width: 100%;
+}
+.searchable-select input.ss-input {
+  width: 100%;
+  padding: var(--sp8) var(--sp12);
+  padding-right: 30px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  font-family: var(--font);
+  cursor: pointer;
+}
+.searchable-select input.ss-input:focus {
+  outline: 2px solid var(--pri);
+  border-color: var(--pri);
+}
+.searchable-select .ss-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text2);
+  font-size: 10px;
+}
+.searchable-select .ss-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0 0 var(--r) var(--r);
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.searchable-select .ss-dropdown.open { display: block; }
+.searchable-select .ss-option {
+  padding: var(--sp8) var(--sp12);
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text);
+}
+.searchable-select .ss-option:hover,
+.searchable-select .ss-option.highlighted {
+  background: var(--sec-h);
+}
+.searchable-select .ss-option.selected {
+  background: rgba(var(--color-teal-500-rgb), 0.15);
+  font-weight: 500;
+}
+.searchable-select .ss-no-match {
+  padding: var(--sp8) var(--sp12);
+  color: var(--text2);
+  font-size: 13px;
+  font-style: italic;
+}
