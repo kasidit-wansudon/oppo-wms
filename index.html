@@ -1,52 +1,137 @@
 <!doctype html>
-<html lang="th">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Warehouse Management System</title>
 
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <div class="container">
       <header>
-        <h1>📦 OPPO Warehouse Management System</h1>
-        <p style="color:var(--text2)">ระบบจัดการคลังสินค้า OPPO - Product, PO, SO และ Inventory</p>
+        <h1>
+          <i class="fa-solid fa-boxes-stacked"></i> OPPO Warehouse Management
+          System
+        </h1>
+        <p style="color: var(--text2)">
+          Warehouse Management System - Product, PO, SO and Inventory
+        </p>
         <div class="tabs">
-          <button class="tab active" onclick="switchTab('dashboard')">Dashboard</button>
-          <button class="tab" onclick="switchTab('product')">Product Management</button>
-          <button class="tab" onclick="switchTab('po')">Purchase Orders</button>
-          <button class="tab" onclick="switchTab('so')">Sales Orders</button>
-          <button class="tab" onclick="switchTab('inventory')">Inventory</button>
-          <button class="tab" onclick="switchTab('reports')">Reports</button>
+          <button class="tab active" onclick="switchTab('dashboard')">
+            <i class="fa-solid fa-gauge"></i> Dashboard
+          </button>
+          <button class="tab" onclick="switchTab('product')">
+            <i class="fa-solid fa-box"></i> Product Management
+          </button>
+          <button class="tab" onclick="switchTab('po')">
+            <i class="fa-solid fa-cart-arrow-down"></i> Purchase Orders
+          </button>
+          <button class="tab" onclick="switchTab('so')">
+            <i class="fa-solid fa-cart-plus"></i> Sales Orders
+          </button>
+          <button class="tab" onclick="switchTab('inventory')">
+            <i class="fa-solid fa-warehouse"></i> Inventory
+          </button>
+          <button class="tab" onclick="switchTab('reports')">
+            <i class="fa-solid fa-chart-bar"></i> Reports
+          </button>
         </div>
       </header>
 
       <!-- ========== DASHBOARD ========== -->
       <div id="dashboard" class="content-section active">
         <div class="stats-grid">
-          <div class="stat-card"><div class="stat-label">Total Products</div><div class="stat-value" id="totalProducts">0</div></div>
-          <div class="stat-card"><div class="stat-label">Active POs</div><div class="stat-value" id="activePO">0</div></div>
-          <div class="stat-card"><div class="stat-label">Active SOs</div><div class="stat-value" id="activeSO">0</div></div>
-          <div class="stat-card"><div class="stat-label">Total Stock Value</div><div class="stat-value" id="totalValue">฿0</div></div>
-          <div class="stat-card"><div class="stat-label">Low Stock Alerts</div><div class="stat-value" id="lowStockCount" style="color:var(--err)">0</div></div>
-          <div class="stat-card"><div class="stat-label">Pending PO Value</div><div class="stat-value" id="pendingPOValue">฿0</div></div>
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="fa-solid fa-box"></i> Total Products
+            </div>
+            <div class="stat-value" id="totalProducts">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="fa-solid fa-file-invoice"></i> Active POs
+            </div>
+            <div class="stat-value" id="activePO">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="fa-solid fa-receipt"></i> Active SOs
+            </div>
+            <div class="stat-value" id="activeSO">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="fa-solid fa-coins"></i> Total Stock Value
+            </div>
+            <div class="stat-value" id="totalValue">฿0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="fa-solid fa-triangle-exclamation"></i> Low Stock Alerts
+            </div>
+            <div
+              class="stat-value"
+              id="lowStockCount"
+              style="color: var(--err)"
+            >
+              0
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">
+              <i class="fa-solid fa-clock"></i> Pending PO Value
+            </div>
+            <div class="stat-value" id="pendingPOValue">฿0</div>
+          </div>
         </div>
         <div class="card">
-          <h2>Recent Activities</h2>
+          <h2>
+            <i class="fa-solid fa-clock-rotate-left"></i> Recent Activities
+          </h2>
           <div class="table-container">
             <table id="activityTable">
-              <thead><tr><th>Date</th><th>Time</th><th>Type</th><th>Reference</th><th>Details</th><th>Status</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Type</th>
+                  <th>Reference</th>
+                  <th>Details</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
               <tbody></tbody>
             </table>
           </div>
         </div>
         <div class="card">
-          <h2>⚠️ Low Stock Alerts</h2>
+          <h2>
+            <i
+              class="fa-solid fa-triangle-exclamation"
+              style="color: var(--err)"
+            ></i>
+            Low Stock Alerts
+          </h2>
           <div class="table-container">
             <table id="lowStockAlertTable">
-              <thead><tr><th>Product Code</th><th>Product Name</th><th>Storage</th><th>Color</th><th>Current Stock</th><th>Reorder Level</th><th>Deficit</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Product Code</th>
+                  <th>Product Name</th>
+                  <th>Storage</th>
+                  <th>Color</th>
+                  <th>Current Stock</th>
+                  <th>Reorder Level</th>
+                  <th>Deficit</th>
+                </tr>
+              </thead>
               <tbody></tbody>
             </table>
           </div>
@@ -56,15 +141,43 @@
       <!-- ========== PRODUCT ========== -->
       <div id="product" class="content-section">
         <div class="card">
-          <h2>Product Management</h2>
-          <div class="search-bar"><input type="text" id="productSearch" placeholder="ค้นหา Product Code, Name, SKU..." onkeyup="filterTable('productTable','productSearch')" /></div>
+          <h2><i class="fa-solid fa-box"></i> Product Management</h2>
+          <div class="search-bar">
+            <input
+              type="text"
+              id="productSearch"
+              placeholder="Search Product Code, Name, SKU..."
+              onkeyup="filterTable('productTable', 'productSearch')"
+            />
+          </div>
           <div class="btn-actions">
-            <button class="btn btn-primary" onclick="openProductModal()">+ เพิ่ม Product ใหม่</button>
-            <button class="btn btn-secondary" onclick="exportCSV('product')">📥 Export CSV</button>
+            <button class="btn btn-primary" onclick="openProductModal()">
+              <i class="fa-solid fa-plus"></i> Add New Product
+            </button>
+            <button class="btn btn-secondary" onclick="exportCSV('product')">
+              <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
           </div>
           <div class="table-container">
             <table id="productTable">
-              <thead><tr><th>Product Code</th><th>Product Name</th><th>Brand</th><th>Series</th><th>Category</th><th>Storage</th><th>Color</th><th>Network</th><th>Price (฿)</th><th>Import (USD)</th><th>Stock</th><th>Reorder</th><th>Status</th><th>Actions</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Product Code</th>
+                  <th>Product Name</th>
+                  <th>Brand</th>
+                  <th>Series</th>
+                  <th>Category</th>
+                  <th>Storage</th>
+                  <th>Color</th>
+                  <th>Network</th>
+                  <th>Price (฿)</th>
+                  <th>Import (USD)</th>
+                  <th>Stock</th>
+                  <th>Reorder</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
               <tbody></tbody>
             </table>
           </div>
@@ -74,15 +187,39 @@
       <!-- ========== PO ========== -->
       <div id="po" class="content-section">
         <div class="card">
-          <h2>Purchase Orders</h2>
-          <div class="search-bar"><input type="text" id="poSearch" placeholder="ค้นหา PO Number, Supplier..." onkeyup="filterTable('poTable','poSearch')" /></div>
+          <h2><i class="fa-solid fa-cart-arrow-down"></i> Purchase Orders</h2>
+          <div class="search-bar">
+            <input
+              type="text"
+              id="poSearch"
+              placeholder="Search PO Number, Supplier..."
+              onkeyup="filterTable('poTable', 'poSearch')"
+            />
+          </div>
           <div class="btn-actions">
-            <button class="btn btn-primary" onclick="openOrderModal('po')">+ สร้าง PO ใหม่</button>
-            <button class="btn btn-secondary" onclick="exportCSV('po')">📥 Export CSV</button>
+            <button class="btn btn-primary" onclick="openOrderModal('po')">
+              <i class="fa-solid fa-plus"></i> Create New PO
+            </button>
+            <button class="btn btn-secondary" onclick="exportCSV('po')">
+              <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
           </div>
           <div class="table-container">
             <table id="poTable">
-              <thead><tr><th>PO Number</th><th>Supplier</th><th>Product</th><th>Date</th><th>Expected</th><th>Qty</th><th>Unit Price</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>PO Number</th>
+                  <th>Supplier</th>
+                  <th>Product</th>
+                  <th>Date</th>
+                  <th>Expected</th>
+                  <th>Qty</th>
+                  <th>Unit Price</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
               <tbody></tbody>
             </table>
           </div>
@@ -92,15 +229,39 @@
       <!-- ========== SO ========== -->
       <div id="so" class="content-section">
         <div class="card">
-          <h2>Sales Orders</h2>
-          <div class="search-bar"><input type="text" id="soSearch" placeholder="ค้นหา SO Number, Customer..." onkeyup="filterTable('soTable','soSearch')" /></div>
+          <h2><i class="fa-solid fa-cart-plus"></i> Sales Orders</h2>
+          <div class="search-bar">
+            <input
+              type="text"
+              id="soSearch"
+              placeholder="Search SO Number, Customer..."
+              onkeyup="filterTable('soTable', 'soSearch')"
+            />
+          </div>
           <div class="btn-actions">
-            <button class="btn btn-primary" onclick="openOrderModal('so')">+ สร้าง SO ใหม่</button>
-            <button class="btn btn-secondary" onclick="exportCSV('so')">📥 Export CSV</button>
+            <button class="btn btn-primary" onclick="openOrderModal('so')">
+              <i class="fa-solid fa-plus"></i> Create New SO
+            </button>
+            <button class="btn btn-secondary" onclick="exportCSV('so')">
+              <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
           </div>
           <div class="table-container">
             <table id="soTable">
-              <thead><tr><th>SO Number</th><th>Customer</th><th>Product</th><th>Date</th><th>Delivery</th><th>Qty</th><th>Unit Price</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>SO Number</th>
+                  <th>Customer</th>
+                  <th>Product</th>
+                  <th>Date</th>
+                  <th>Delivery</th>
+                  <th>Qty</th>
+                  <th>Unit Price</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
               <tbody></tbody>
             </table>
           </div>
@@ -110,14 +271,38 @@
       <!-- ========== INVENTORY ========== -->
       <div id="inventory" class="content-section">
         <div class="card">
-          <h2>Inventory Overview</h2>
-          <div class="search-bar"><input type="text" id="inventorySearch" placeholder="ค้นหาสินค้า..." onkeyup="filterTable('inventoryTable','inventorySearch')" /></div>
+          <h2><i class="fa-solid fa-warehouse"></i> Inventory Overview</h2>
+          <div class="search-bar">
+            <input
+              type="text"
+              id="inventorySearch"
+              placeholder="Search products..."
+              onkeyup="filterTable('inventoryTable', 'inventorySearch')"
+            />
+          </div>
           <div class="btn-actions">
-            <button class="btn btn-secondary" onclick="exportCSV('inventory')">📥 Export CSV</button>
+            <button class="btn btn-secondary" onclick="exportCSV('inventory')">
+              <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
           </div>
           <div class="table-container">
             <table id="inventoryTable">
-              <thead><tr><th>Product Code</th><th>Product Name</th><th>Storage</th><th>Color</th><th>Network</th><th>Current Stock</th><th>Reserved (SO)</th><th>Incoming (PO)</th><th>Available</th><th>Reorder Level</th><th>Stock Value (฿)</th><th>Status</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Product Code</th>
+                  <th>Product Name</th>
+                  <th>Storage</th>
+                  <th>Color</th>
+                  <th>Network</th>
+                  <th>Current Stock</th>
+                  <th>Reserved (SO)</th>
+                  <th>Incoming (PO)</th>
+                  <th>Available</th>
+                  <th>Reorder Level</th>
+                  <th>Stock Value (฿)</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
               <tbody></tbody>
             </table>
           </div>
@@ -127,7 +312,7 @@
       <!-- ========== REPORTS ========== -->
       <div id="reports" class="content-section">
         <div class="card">
-          <h2>📊 Report Center</h2>
+          <h2><i class="fa-solid fa-chart-bar"></i> Report Center</h2>
           <div class="form-grid">
             <div class="form-group">
               <label>Report Type</label>
@@ -142,17 +327,31 @@
             </div>
             <div class="form-group">
               <label>Date From</label>
-              <input type="date" id="reportDateFrom" onchange="generateReport()" />
+              <input
+                type="date"
+                id="reportDateFrom"
+                onchange="generateReport()"
+              />
             </div>
             <div class="form-group">
               <label>Date To</label>
-              <input type="date" id="reportDateTo" onchange="generateReport()" />
+              <input
+                type="date"
+                id="reportDateTo"
+                onchange="generateReport()"
+              />
             </div>
           </div>
-          <div class="btn-actions" style="margin-top:0">
-            <button class="btn btn-primary" onclick="generateReport()">🔄 Generate Report</button>
-            <button class="btn btn-secondary" onclick="exportCSV('report')">📥 Export CSV</button>
-            <button class="btn btn-secondary" onclick="printReport()">🖨️ Print</button>
+          <div class="btn-actions" style="margin-top: 0">
+            <button class="btn btn-primary" onclick="generateReport()">
+              <i class="fa-solid fa-rotate"></i> Generate Report
+            </button>
+            <button class="btn btn-secondary" onclick="exportCSV('report')">
+              <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
+            <button class="btn btn-secondary" onclick="printReport()">
+              <i class="fa-solid fa-print"></i> Print
+            </button>
           </div>
         </div>
         <div id="reportSummary" class="report-summary"></div>
@@ -160,7 +359,9 @@
           <h2 id="reportTitle">Stock Summary Report</h2>
           <div class="table-container">
             <table id="reportTable">
-              <thead><tr></tr></thead>
+              <thead>
+                <tr></tr>
+              </thead>
               <tbody></tbody>
             </table>
           </div>
@@ -172,31 +373,148 @@
     <!-- Product Modal -->
     <div id="productModal" class="modal">
       <div class="modal-content">
-        <div class="modal-header"><h2 id="productModalTitle">เพิ่ม/แก้ไข Product</h2><button class="modal-close" onclick="toggleModal('productModal',false)">&times;</button></div>
+        <div class="modal-header">
+          <h2 id="productModalTitle">
+            <i class="fa-solid fa-box"></i> Add / Edit Product
+          </h2>
+          <button
+            class="modal-close"
+            onclick="toggleModal('productModal', false)"
+          >
+            &times;
+          </button>
+        </div>
         <form onsubmit="saveProduct(event)">
           <div class="form-grid">
-            <div class="form-group"><label>Category *</label><select id="category" required><option value="">เลือก Category</option><option>Phone</option><option>IOT</option><option>Accessories</option><option>Bundle</option><option>Other</option></select></div>
-            <div class="form-group"><label>Brand *</label><input type="text" id="brand" value="OPPO" required /></div>
-            <div class="form-group"><label>Series</label><input type="text" id="series" placeholder="FIND, RENO, A Series" /></div>
-            <div class="form-group"><label>Product Code *</label><input type="text" id="productCode" placeholder="CPH2026" required /></div>
+            <div class="form-group">
+              <label>Category *</label
+              ><select id="category" required>
+                <option value="">Select Category</option>
+                <option>Phone</option>
+                <option>IOT</option>
+                <option>Accessories</option>
+                <option>Bundle</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Brand *</label
+              ><input type="text" id="brand" value="OPPO" required />
+            </div>
+            <div class="form-group">
+              <label>Series</label
+              ><input
+                type="text"
+                id="series"
+                placeholder="FIND, RENO, A Series"
+              />
+            </div>
+            <div class="form-group">
+              <label>Product Code *</label
+              ><input
+                type="text"
+                id="productCode"
+                placeholder="CPH2026"
+                required
+              />
+            </div>
           </div>
-          <div class="form-group" style="margin-bottom:var(--sp16)"><label>Product Name *</label><input type="text" id="productName" placeholder="FIND X9 PRO" required /></div>
+          <div class="form-group" style="margin-bottom: var(--sp16)">
+            <label>Product Name *</label
+            ><input
+              type="text"
+              id="productName"
+              placeholder="FIND X9 PRO"
+              required
+            />
+          </div>
           <div class="form-grid">
-            <div class="form-group"><label>Storage *</label><select id="storage" required><option value="">เลือก Storage</option><option>8+128GB</option><option>8+256GB</option><option>12+256GB</option><option>12+512GB</option><option>16+512GB</option><option>16+1TB</option><option>N/A</option></select></div>
-            <div class="form-group"><label>Color *</label><select id="color" required><option value="">เลือก Color</option><option>BLACK</option><option>WHITE</option><option>BLUE</option><option>GREEN</option><option>PURPLE</option><option>GOLD</option></select></div>
-            <div class="form-group"><label>Network Type *</label><select id="network" required><option value="">เลือก Network</option><option>OPEN</option><option>TELCEL</option><option value="AT&T">AT&amp;T</option><option>MOVISTAR</option><option>N/A</option></select></div>
-            <div class="form-group"><label>Unit Price (฿) *</label><input type="number" id="unitPrice" step="0.01" required /></div>
-            <div class="form-group"><label>Import Price (USD)</label><input type="number" id="importPrice" step="0.01" /></div>
-            <div class="form-group"><label>Tax</label><select id="tax"><option value="NO">NO</option><option value="YES">YES</option></select></div>
-            <div class="form-group"><label>Tax Rate (%)</label><input type="number" id="taxRate" step="0.01" value="0" /></div>
-            <div class="form-group"><label>Custom Rate</label><input type="number" id="customRate" step="0.01" value="0" /></div>
-            <div class="form-group"><label>Initial Stock</label><input type="number" id="initialStock" value="0" /></div>
-            <div class="form-group"><label>Reorder Level</label><input type="number" id="reorderLevel" value="10" /></div>
-            <div class="form-group"><label>Status</label><select id="pStatus"><option>Enable</option><option>Disable</option></select></div>
+            <div class="form-group">
+              <label>Storage *</label
+              ><select id="storage" required>
+                <option value="">Select Storage</option>
+                <option>8+128GB</option>
+                <option>8+256GB</option>
+                <option>12+256GB</option>
+                <option>12+512GB</option>
+                <option>16+512GB</option>
+                <option>16+1TB</option>
+                <option>N/A</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Color *</label
+              ><select id="color" required>
+                <option value="">Select Color</option>
+                <option>BLACK</option>
+                <option>WHITE</option>
+                <option>BLUE</option>
+                <option>GREEN</option>
+                <option>PURPLE</option>
+                <option>GOLD</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Network Type *</label
+              ><select id="network" required>
+                <option value="">Select Network</option>
+                <option>OPEN</option>
+                <option>TELCEL</option>
+                <option value="AT&T">AT&amp;T</option>
+                <option>MOVISTAR</option>
+                <option>N/A</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Unit Price (฿) *</label
+              ><input type="number" id="unitPrice" step="0.01" required />
+            </div>
+            <div class="form-group">
+              <label>Import Price (USD)</label
+              ><input type="number" id="importPrice" step="0.01" />
+            </div>
+            <div class="form-group">
+              <label>Tax</label
+              ><select id="tax">
+                <option value="NO">NO</option>
+                <option value="YES">YES</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tax Rate (%)</label
+              ><input type="number" id="taxRate" step="0.01" value="0" />
+            </div>
+            <div class="form-group">
+              <label>Custom Rate</label
+              ><input type="number" id="customRate" step="0.01" value="0" />
+            </div>
+            <div class="form-group">
+              <label>Initial Stock</label
+              ><input type="number" id="initialStock" value="0" />
+            </div>
+            <div class="form-group">
+              <label>Reorder Level</label
+              ><input type="number" id="reorderLevel" value="10" />
+            </div>
+            <div class="form-group">
+              <label>Status</label
+              ><select id="pStatus">
+                <option>Enable</option>
+                <option>Disable</option>
+              </select>
+            </div>
           </div>
           <div class="btn-actions">
-            <button type="submit" class="btn btn-primary">บันทึก</button>
-            <button type="button" class="btn btn-secondary" onclick="toggleModal('productModal',false)">ยกเลิก</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i> Save
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="toggleModal('productModal', false)"
+            >
+              <i class="fa-solid fa-xmark"></i> Cancel
+            </button>
           </div>
         </form>
       </div>
@@ -205,26 +523,90 @@
     <!-- PO Modal -->
     <div id="poModal" class="modal">
       <div class="modal-content">
-        <div class="modal-header"><h2>สร้าง Purchase Order</h2><button class="modal-close" onclick="toggleModal('poModal',false)">&times;</button></div>
-        <form onsubmit="saveOrder(event,'po')">
+        <div class="modal-header">
+          <h2>
+            <i class="fa-solid fa-cart-arrow-down"></i> Create Purchase Order
+          </h2>
+          <button class="modal-close" onclick="toggleModal('poModal', false)">
+            &times;
+          </button>
+        </div>
+        <form onsubmit="saveOrder(event, 'po')">
           <div class="form-grid">
-            <div class="form-group"><label>PO Number *</label><input type="text" id="poNumber" required /></div>
-            <div class="form-group"><label>Supplier *</label><input type="text" id="supplier" placeholder="OPPO Factory" required /></div>
-            <div class="form-group"><label>Order Date *</label><input type="date" id="poDate" required /></div>
-            <div class="form-group"><label>Expected Delivery</label><input type="date" id="expectedDelivery" /></div>
+            <div class="form-group">
+              <label>PO Number *</label
+              ><input type="text" id="poNumber" required />
+            </div>
+            <div class="form-group">
+              <label>Supplier *</label
+              ><input
+                type="text"
+                id="supplier"
+                placeholder="OPPO Factory"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Order Date *</label
+              ><input type="date" id="poDate" required />
+            </div>
+            <div class="form-group">
+              <label>Expected Delivery</label
+              ><input type="date" id="expectedDelivery" />
+            </div>
           </div>
           <h3 class="section-title">Product Selection</h3>
           <div class="form-grid" id="poFilters"></div>
-          <div class="form-group" style="margin-bottom:var(--sp16)"><label>Product *</label><select id="poProduct" required onchange="updateOrderProduct('po')"><option value="">เลือก Product</option></select></div>
-          <div class="form-grid">
-            <div class="form-group"><label>Quantity *</label><input type="number" id="poQuantity" required min="1" oninput="updateOrderTotal('po')" /></div>
-            <div class="form-group"><label>Unit Price (฿) *</label><input type="number" id="poUnitPrice" step="0.01" required oninput="updateOrderTotal('po')" /></div>
-            <div class="form-group"><label>Total Amount (฿)</label><input type="number" id="poTotal" step="0.01" readonly /></div>
+          <div class="form-group" style="margin-bottom: var(--sp16)">
+            <label>Product *</label
+            ><select
+              id="poProduct"
+              required
+              onchange="updateOrderProduct('po')"
+            >
+              <option value="">Select Product</option>
+            </select>
           </div>
-          <div class="form-group"><label>Notes</label><textarea id="poNotes" rows="3"></textarea></div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Quantity *</label
+              ><input
+                type="number"
+                id="poQuantity"
+                required
+                min="1"
+                oninput="updateOrderTotal('po')"
+              />
+            </div>
+            <div class="form-group">
+              <label>Unit Price (฿) *</label
+              ><input
+                type="number"
+                id="poUnitPrice"
+                step="0.01"
+                required
+                oninput="updateOrderTotal('po')"
+              />
+            </div>
+            <div class="form-group">
+              <label>Total Amount (฿)</label
+              ><input type="number" id="poTotal" step="0.01" readonly />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Notes</label><textarea id="poNotes" rows="3"></textarea>
+          </div>
           <div class="btn-actions">
-            <button type="submit" class="btn btn-primary">สร้าง PO</button>
-            <button type="button" class="btn btn-secondary" onclick="toggleModal('poModal',false)">ยกเลิก</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i> Create PO
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="toggleModal('poModal', false)"
+            >
+              <i class="fa-solid fa-xmark"></i> Cancel
+            </button>
           </div>
         </form>
       </div>
@@ -233,26 +615,89 @@
     <!-- SO Modal -->
     <div id="soModal" class="modal">
       <div class="modal-content">
-        <div class="modal-header"><h2>สร้าง Sales Order</h2><button class="modal-close" onclick="toggleModal('soModal',false)">&times;</button></div>
-        <form onsubmit="saveOrder(event,'so')">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-cart-plus"></i> Create Sales Order</h2>
+          <button class="modal-close" onclick="toggleModal('soModal', false)">
+            &times;
+          </button>
+        </div>
+        <form onsubmit="saveOrder(event, 'so')">
           <div class="form-grid">
-            <div class="form-group"><label>SO Number *</label><input type="text" id="soNumber" required /></div>
-            <div class="form-group"><label>Customer *</label><select id="customer" required><option value="">เลือก Customer</option><option>TELCEL</option><option value="AT&T Mexico">AT&amp;T Mexico</option><option>MOVISTAR</option><option>Other</option></select></div>
-            <div class="form-group"><label>Order Date *</label><input type="date" id="soDate" required /></div>
-            <div class="form-group"><label>Delivery Date</label><input type="date" id="deliveryDate" /></div>
+            <div class="form-group">
+              <label>SO Number *</label
+              ><input type="text" id="soNumber" required />
+            </div>
+            <div class="form-group">
+              <label>Customer *</label
+              ><select id="customer" required>
+                <option value="">Select Customer</option>
+                <option>TELCEL</option>
+                <option value="AT&T Mexico">AT&amp;T Mexico</option>
+                <option>MOVISTAR</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Order Date *</label
+              ><input type="date" id="soDate" required />
+            </div>
+            <div class="form-group">
+              <label>Delivery Date</label
+              ><input type="date" id="deliveryDate" />
+            </div>
           </div>
           <h3 class="section-title">Product Selection</h3>
           <div class="form-grid" id="soFilters"></div>
-          <div class="form-group" style="margin-bottom:var(--sp16)"><label>Product *</label><select id="soProduct" required onchange="updateOrderProduct('so')"><option value="">เลือก Product</option></select></div>
-          <div class="form-grid">
-            <div class="form-group"><label>Quantity *</label><input type="number" id="soQuantity" required min="1" oninput="updateOrderTotal('so')" /></div>
-            <div class="form-group"><label>Unit Price (฿) *</label><input type="number" id="soUnitPrice" step="0.01" required oninput="updateOrderTotal('so')" /></div>
-            <div class="form-group"><label>Total Amount (฿)</label><input type="number" id="soTotal" step="0.01" readonly /></div>
+          <div class="form-group" style="margin-bottom: var(--sp16)">
+            <label>Product *</label
+            ><select
+              id="soProduct"
+              required
+              onchange="updateOrderProduct('so')"
+            >
+              <option value="">Select Product</option>
+            </select>
           </div>
-          <div class="form-group"><label>Notes</label><textarea id="soNotes" rows="3"></textarea></div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Quantity *</label
+              ><input
+                type="number"
+                id="soQuantity"
+                required
+                min="1"
+                oninput="updateOrderTotal('so')"
+              />
+            </div>
+            <div class="form-group">
+              <label>Unit Price (฿) *</label
+              ><input
+                type="number"
+                id="soUnitPrice"
+                step="0.01"
+                required
+                oninput="updateOrderTotal('so')"
+              />
+            </div>
+            <div class="form-group">
+              <label>Total Amount (฿)</label
+              ><input type="number" id="soTotal" step="0.01" readonly />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Notes</label><textarea id="soNotes" rows="3"></textarea>
+          </div>
           <div class="btn-actions">
-            <button type="submit" class="btn btn-primary">สร้าง SO</button>
-            <button type="button" class="btn btn-secondary" onclick="toggleModal('soModal',false)">ยกเลิก</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i> Create SO
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="toggleModal('soModal', false)"
+            >
+              <i class="fa-solid fa-xmark"></i> Cancel
+            </button>
           </div>
         </form>
       </div>
@@ -261,10 +706,25 @@
     <!-- Sub-PO Modal -->
     <div id="subPOModal" class="modal">
       <div class="modal-content">
-        <div class="modal-header"><h2>Sub-PO Management</h2><button class="modal-close" onclick="toggleModal('subPOModal',false)">&times;</button></div>
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-sitemap"></i> Sub-PO Management</h2>
+          <button
+            class="modal-close"
+            onclick="toggleModal('subPOModal', false)"
+          >
+            &times;
+          </button>
+        </div>
         <div id="subPOContent">
-          <div style="margin-bottom:var(--sp16)"><h3 class="section-title" style="margin-top:0">PO Information</h3><div id="currentPOInfo"></div></div>
-          <div class="btn-actions"><button class="btn btn-primary" onclick="openAddSubPOForm()">+ เพิ่ม Sub-PO</button></div>
+          <div style="margin-bottom: var(--sp16)">
+            <h3 class="section-title" style="margin-top: 0">PO Information</h3>
+            <div id="currentPOInfo"></div>
+          </div>
+          <div class="btn-actions">
+            <button class="btn btn-primary" onclick="openAddSubPOForm()">
+              <i class="fa-solid fa-plus"></i> Add Sub-PO
+            </button>
+          </div>
           <div class="sub-po-list" id="subPOList"></div>
         </div>
       </div>
@@ -273,23 +733,70 @@
     <!-- Add/Edit Sub-PO Modal -->
     <div id="addSubPOModal" class="modal">
       <div class="modal-content">
-        <div class="modal-header"><h2>เพิ่ม/แก้ไข Sub-PO</h2><button class="modal-close" onclick="toggleModal('addSubPOModal',false)">&times;</button></div>
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-plus"></i> Add / Edit Sub-PO</h2>
+          <button
+            class="modal-close"
+            onclick="toggleModal('addSubPOModal', false)"
+          >
+            &times;
+          </button>
+        </div>
         <form onsubmit="saveSubPO(event)">
           <div class="form-grid">
-            <div class="form-group"><label>Sub-PO No. *</label><input type="text" id="subPONo" required /></div>
-            <div class="form-group"><label>System Number</label><input type="text" id="systemNo" /></div>
-            <div class="form-group"><label>Invoice No.</label><input type="text" id="invoiceNo" placeholder="CI19369126830" /></div>
-            <div class="form-group"><label>Bill of Lading No.</label><input type="text" id="ladingNo" placeholder="A26765436926" /></div>
-            <div class="form-group"><label>Pedimento No.</label><input type="text" id="pedimentoNo" placeholder="P21675497692" /></div>
-            <div class="form-group"><label>Arrival Date</label><input type="date" id="arrivalDate" /></div>
-            <div class="form-group"><label>Inbound Date</label><input type="date" id="inboundDate" /></div>
-            <div class="form-group"><label>Status *</label><select id="subPOStatus" required><option>Pending Inbound</option><option>Partial Inbound</option><option>Inbound Completed</option></select></div>
-            <div class="form-group"><label>Quantity *</label><input type="number" id="subPOQuantity" required min="1" /></div>
+            <div class="form-group">
+              <label>Sub-PO No. *</label
+              ><input type="text" id="subPONo" required />
+            </div>
+            <div class="form-group">
+              <label>System Number</label><input type="text" id="systemNo" />
+            </div>
+            <div class="form-group">
+              <label>Invoice No.</label
+              ><input type="text" id="invoiceNo" placeholder="CI19369126830" />
+            </div>
+            <div class="form-group">
+              <label>Bill of Lading No.</label
+              ><input type="text" id="ladingNo" placeholder="A26765436926" />
+            </div>
+            <div class="form-group">
+              <label>Pedimento No.</label
+              ><input type="text" id="pedimentoNo" placeholder="P21675497692" />
+            </div>
+            <div class="form-group">
+              <label>Arrival Date</label><input type="date" id="arrivalDate" />
+            </div>
+            <div class="form-group">
+              <label>Inbound Date</label><input type="date" id="inboundDate" />
+            </div>
+            <div class="form-group">
+              <label>Status *</label
+              ><select id="subPOStatus" required>
+                <option>Pending Inbound</option>
+                <option>Partial Inbound</option>
+                <option>Inbound Completed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Quantity *</label
+              ><input type="number" id="subPOQuantity" required min="1" />
+            </div>
           </div>
-          <div class="form-group"><label>Details</label><textarea id="subPODetails" rows="3"></textarea></div>
+          <div class="form-group">
+            <label>Details</label
+            ><textarea id="subPODetails" rows="3"></textarea>
+          </div>
           <div class="btn-actions">
-            <button type="submit" class="btn btn-primary">บันทึก</button>
-            <button type="button" class="btn btn-secondary" onclick="toggleModal('addSubPOModal',false)">ยกเลิก</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i> Save
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="toggleModal('addSubPOModal', false)"
+            >
+              <i class="fa-solid fa-xmark"></i> Cancel
+            </button>
           </div>
         </form>
       </div>
@@ -298,7 +805,17 @@
     <!-- Detail View Modal -->
     <div id="detailModal" class="modal">
       <div class="modal-content">
-        <div class="modal-header"><h2 id="detailModalTitle">Order Details</h2><button class="modal-close" onclick="toggleModal('detailModal',false)">&times;</button></div>
+        <div class="modal-header">
+          <h2 id="detailModalTitle">
+            <i class="fa-solid fa-circle-info"></i> Order Details
+          </h2>
+          <button
+            class="modal-close"
+            onclick="toggleModal('detailModal', false)"
+          >
+            &times;
+          </button>
+        </div>
         <div id="detailContent"></div>
       </div>
     </div>
